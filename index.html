@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting...</title>
+<script>
+// Your IPinfo token
+const token = "b58b756f47077a";
+
+fetch(`https://ipinfo.io/json?token=${token}`)
+  .then(response => response.json())
+  .then(data => {
+    const country = data.country; // ISO country code, e.g., "GB" or "US"
+
+    if (country === "GB") {
+      window.location.href = "https://www.amazon.co.uk/hz/mycd/digital-console/contentlist/booksAll/dateDsc/";
+    } else {
+      window.location.href = "https://www.amazon.com/hz/mycd/digital-console/contentlist/booksAll/dateDsc/";
+    }
+  })
+  .catch(() => {
+    // Fallback to US if API fails
+    window.location.href = "https://www.amazon.com/hz/mycd/digital-console/contentlist/booksAll/dateDsc/";
+  });
+</script>
+</head>
+<body>
+<p>Redirecting to your regional Amazon...</p>
+</body>
+</html>
